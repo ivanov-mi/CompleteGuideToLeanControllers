@@ -8,14 +8,51 @@
 import UIKit
 import CoreData
 
-class ShoppingListsTableTableViewController: UITableViewController {
+class ShoppingListsTableTableViewController: UITableViewController, UITextFieldDelegate, NSFetchedResultsControllerDelegate {
     
     var managedObjectContext: NSManagedObjectContext!
+    var fetchResultsController: NSFetchedResultsController<ShoppingList>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
         initializeCoreDataStack()
+        populateShoppingLists()
+    }
+    
+    private func populateShoppingLists() {
+        
+        let request = NSFetchRequest<ShoppingList>(entityName: "ShoppingList")
+        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        
+        self.fetchResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        self.fetchResultsController.delegate = self
+        
+        try! self.fetchResultsController.performFetch()
+        
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        if type == .insert {
+            self.tableView.insertRows(at: [newIndexPath!], with: .automatic)
+        } else if type == .delete {
+            self.tableView.deleteRows(at: [indexPath!], with: .automatic)
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            let shoppingList = self.fetchResultsController.object(at: indexPath)
+            
+            self.managedObjectContext.delete(shoppingList)
+            try! self.managedObjectContext.save()
+        }
+        
+        self.tableView.isEditing = false
     }
     
     // MARK: - Table view data source
@@ -25,7 +62,20 @@ class ShoppingListsTableTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        guard let sections = self.fetchResultsController.sections else {
+            return 0
+        }
+        
+        return sections[section].numberOfObjects
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let shoppingList = self.fetchResultsController.object(at: indexPath)
+        cell.textLabel?.text = shoppingList.title
+        
+        return cell
     }
     
     func initializeCoreDataStack() {
@@ -67,9 +117,22 @@ class ShoppingListsTableTableViewController: UITableViewController {
         textField.placeholder = "Enter Shopping List"
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         textField.leftViewMode = .always
+        textField.delegate = self
         
         headerView.addSubview(textField)
         
         return headerView
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        let shoppingList = NSEntityDescription.insertNewObject(forEntityName: "ShoppingList", into: self.managedObjectContext) as! ShoppingList
+        
+        shoppingList.title = textField.text
+        try! self.managedObjectContext.save()
+        
+        textField.text = nil
+        
+        return textField.resignFirstResponder()
     }
 }
