@@ -17,6 +17,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
+        
+        let coreDataManager = CoreDataManager()
+        coreDataManager.initializeCoreDataStack()
+        
+        guard let navigationController = window?.rootViewController as? UINavigationController else {
+            fatalError("RootViewController not found")
+        }
+        
+        guard let shoppingListTVC = navigationController.viewControllers.first as? ShoppingListsTableTableViewController else {
+            fatalError("ShoppingListTableViewController not found")
+        }
+        
+        shoppingListTVC.managedObjectContext = coreDataManager.managedObjectContext
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
