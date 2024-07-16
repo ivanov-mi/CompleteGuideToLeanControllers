@@ -16,6 +16,7 @@
 		AB0626642C40300000FFD84F /* MyGroceryDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AB0626622C40300000FFD84F /* MyGroceryDataModel.xcdatamodeld */; };
 		AB3C83632C455C6B00D7CAB6 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3C83622C455C6B00D7CAB6 /* CoreDataManager.swift */; };
 		AB3C83652C45797F00D7CAB6 /* ShoppingListDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3C83642C45797F00D7CAB6 /* ShoppingListDataProvider.swift */; };
+		ABC62D692C46ACF5002EB7A5 /* ShoppingListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC62D682C46ACF5002EB7A5 /* ShoppingListDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		AB0626632C40300000FFD84F /* MyGroceryDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyGroceryDataModel.xcdatamodel; sourceTree = "<group>"; };
 		AB3C83622C455C6B00D7CAB6 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		AB3C83642C45797F00D7CAB6 /* ShoppingListDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListDataProvider.swift; sourceTree = "<group>"; };
+		ABC62D682C46ACF5002EB7A5 /* ShoppingListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				AB3C83622C455C6B00D7CAB6 /* CoreDataManager.swift */,
 				AB3C83642C45797F00D7CAB6 /* ShoppingListDataProvider.swift */,
 				AB0626602C402BFC00FFD84F /* ShoppingListsTableTableViewController.swift */,
+				ABC62D682C46ACF5002EB7A5 /* ShoppingListDataSource.swift */,
 				AB0626522C4028B700FFD84F /* Main.storyboard */,
 				AB0626552C4028BA00FFD84F /* Assets.xcassets */,
 				AB0626572C4028BA00FFD84F /* LaunchScreen.storyboard */,
@@ -151,6 +154,7 @@
 				AB06264D2C4028B700FFD84F /* AppDelegate.swift in Sources */,
 				AB3C83652C45797F00D7CAB6 /* ShoppingListDataProvider.swift in Sources */,
 				AB06264F2C4028B700FFD84F /* SceneDelegate.swift in Sources */,
+				ABC62D692C46ACF5002EB7A5 /* ShoppingListDataSource.swift in Sources */,
 				AB3C83632C455C6B00D7CAB6 /* CoreDataManager.swift in Sources */,
 				AB0626642C40300000FFD84F /* MyGroceryDataModel.xcdatamodeld in Sources */,
 			);

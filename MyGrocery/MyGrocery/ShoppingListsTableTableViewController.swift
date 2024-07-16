@@ -11,54 +11,23 @@ import CoreData
 class ShoppingListsTableTableViewController: UITableViewController, UITextFieldDelegate {
     
     var shoppingListDataProvider: ShoppingListDataProvider!
+    var shoppingListDataSource: ShoppingListDataSource!
     var managedObjectContext: NSManagedObjectContext!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ShoppingListTableViewCell")
         populateShoppingLists()
     }
     
     private func populateShoppingLists() {
         shoppingListDataProvider = ShoppingListDataProvider(managedObjectContext: managedObjectContext)
-    }
-    
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        shoppingListDataSource = ShoppingListDataSource(cellIdentifier: "ShoppingListTableViewCell", tableView: self.tableView, shoppingListDataProvider: shoppingListDataProvider)
         
-        if editingStyle == .delete {
-            let shoppingList = shoppingListDataProvider.object(at: indexPath)
-            
-            self.managedObjectContext.delete(shoppingList)
-            try! self.managedObjectContext.save()
-        }
-        
-        self.tableView.isEditing = false
+        tableView.dataSource = shoppingListDataSource
     }
-    
-    // MARK: - Table view data source
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let sections = shoppingListDataProvider.sections else {
-            return 0
-        }
         
-        return sections[section].numberOfObjects
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let shoppingList = shoppingListDataProvider.object(at: indexPath)
-        cell.textLabel?.text = shoppingList.title
-        
-        return cell
-    }
-    
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 44
     }
