@@ -33,29 +33,17 @@ class ShoppingListsTableTableViewController: UITableViewController, UITextFieldD
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.tableView.frame.size.width, height: 44))
-        headerView.backgroundColor = UIColor.lightText
+        let addNewItemView = AddNewItemView(controller: self, placeholderText: "Enter Shopping List") { title in
+            self.addNewShoppingList(title: title)
+        }
         
-        let textField = UITextField(frame: headerView.frame)
-        textField.placeholder = "Enter Shopping List"
-        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
-        textField.leftViewMode = .always
-        textField.delegate = self
-        
-        headerView.addSubview(textField)
-        
-        return headerView
+        return addNewItemView
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
+    private func addNewShoppingList(title: String) {
         let shoppingList = NSEntityDescription.insertNewObject(forEntityName: "ShoppingList", into: self.managedObjectContext) as! ShoppingList
         
-        shoppingList.title = textField.text
+        shoppingList.title = title
         try! self.managedObjectContext.save()
-        
-        textField.text = nil
-        
-        return textField.resignFirstResponder()
     }
 }
