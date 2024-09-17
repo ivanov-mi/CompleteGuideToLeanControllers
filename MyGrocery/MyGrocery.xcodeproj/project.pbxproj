@@ -14,8 +14,12 @@
 		AB0626592C4028BA00FFD84F /* Base in Resources */ = {isa = PBXBuildFile; fileRef = AB0626582C4028BA00FFD84F /* Base */; };
 		AB0626612C402BFC00FFD84F /* ShoppingListsTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0626602C402BFC00FFD84F /* ShoppingListsTableTableViewController.swift */; };
 		AB0626642C40300000FFD84F /* MyGroceryDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AB0626622C40300000FFD84F /* MyGroceryDataModel.xcdatamodeld */; };
+		AB354A122C98777E000045AA /* FetchedResultsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB354A112C98777E000045AA /* FetchedResultsProvider.swift */; };
+		AB354A142C987C75000045AA /* ManagedObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB354A132C987C75000045AA /* ManagedObjectType.swift */; };
 		AB3C83632C455C6B00D7CAB6 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3C83622C455C6B00D7CAB6 /* CoreDataManager.swift */; };
 		AB3C83652C45797F00D7CAB6 /* ShoppingListDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3C83642C45797F00D7CAB6 /* ShoppingListDataProvider.swift */; };
+		AB6FBAEC2C998E7900E1573A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6FBAEB2C998E7900E1573A /* Extensions.swift */; };
+		AB6FBAF02C99CADA00E1573A /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6FBAEF2C99CADA00E1573A /* TableViewDataSource.swift */; };
 		ABC62D692C46ACF5002EB7A5 /* ShoppingListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC62D682C46ACF5002EB7A5 /* ShoppingListDataSource.swift */; };
 		ABC62D6B2C46C1BA002EB7A5 /* AddNewItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC62D6A2C46C1BA002EB7A5 /* AddNewItemView.swift */; };
 /* End PBXBuildFile section */
@@ -30,8 +34,12 @@
 		AB06265A2C4028BA00FFD84F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB0626602C402BFC00FFD84F /* ShoppingListsTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListsTableTableViewController.swift; sourceTree = "<group>"; };
 		AB0626632C40300000FFD84F /* MyGroceryDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyGroceryDataModel.xcdatamodel; sourceTree = "<group>"; };
+		AB354A112C98777E000045AA /* FetchedResultsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsProvider.swift; sourceTree = "<group>"; };
+		AB354A132C987C75000045AA /* ManagedObjectType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectType.swift; sourceTree = "<group>"; };
 		AB3C83622C455C6B00D7CAB6 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		AB3C83642C45797F00D7CAB6 /* ShoppingListDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListDataProvider.swift; sourceTree = "<group>"; };
+		AB6FBAEB2C998E7900E1573A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		AB6FBAEF2C99CADA00E1573A /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		ABC62D682C46ACF5002EB7A5 /* ShoppingListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListDataSource.swift; sourceTree = "<group>"; };
 		ABC62D6A2C46C1BA002EB7A5 /* AddNewItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,6 +81,10 @@
 				AB0626602C402BFC00FFD84F /* ShoppingListsTableTableViewController.swift */,
 				ABC62D682C46ACF5002EB7A5 /* ShoppingListDataSource.swift */,
 				ABC62D6A2C46C1BA002EB7A5 /* AddNewItemView.swift */,
+				AB354A112C98777E000045AA /* FetchedResultsProvider.swift */,
+				AB6FBAEB2C998E7900E1573A /* Extensions.swift */,
+				AB354A132C987C75000045AA /* ManagedObjectType.swift */,
+				AB6FBAEF2C99CADA00E1573A /* TableViewDataSource.swift */,
 				AB0626522C4028B700FFD84F /* Main.storyboard */,
 				AB0626552C4028BA00FFD84F /* Assets.xcassets */,
 				AB0626572C4028BA00FFD84F /* LaunchScreen.storyboard */,
@@ -154,11 +166,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB0626612C402BFC00FFD84F /* ShoppingListsTableTableViewController.swift in Sources */,
+				AB354A122C98777E000045AA /* FetchedResultsProvider.swift in Sources */,
 				AB06264D2C4028B700FFD84F /* AppDelegate.swift in Sources */,
 				AB3C83652C45797F00D7CAB6 /* ShoppingListDataProvider.swift in Sources */,
 				AB06264F2C4028B700FFD84F /* SceneDelegate.swift in Sources */,
 				ABC62D6B2C46C1BA002EB7A5 /* AddNewItemView.swift in Sources */,
+				AB6FBAEC2C998E7900E1573A /* Extensions.swift in Sources */,
+				AB354A142C987C75000045AA /* ManagedObjectType.swift in Sources */,
 				ABC62D692C46ACF5002EB7A5 /* ShoppingListDataSource.swift in Sources */,
+				AB6FBAF02C99CADA00E1573A /* TableViewDataSource.swift in Sources */,
 				AB3C83632C455C6B00D7CAB6 /* CoreDataManager.swift in Sources */,
 				AB0626642C40300000FFD84F /* MyGroceryDataModel.xcdatamodeld in Sources */,
 			);
